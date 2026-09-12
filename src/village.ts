@@ -32,6 +32,15 @@ export function spriteForAgent(
   id: string,
   used: ReadonlySet<CharacterId> = new Set(),
 ): CharacterId {
+  // Local cast preference; this working tree is never published upstream.
+  if (!used.has("kaguya-shinomiya")) return "kaguya-shinomiya";
+  const personalCast = new Set([
+    "kaguya-shinomiya", "miyuki-shirogane", "chika-fujiwara", "yu-ishigami",
+    "miko-iino", "ai-hayasaka", "kei-shirogane", "tsubame-koyasu", "maki-shijo",
+    "nagisa-kashiwagi", "moeha-fujiwara",
+  ]);
+  const available = CHARACTER_IDS.filter((character) => personalCast.has(character) && !used.has(character));
+  if (available.length) return available[fnv1a(id) % available.length];
   const preferred = fnv1a(id) % CHARACTER_IDS.length;
   for (let offset = 0; offset < CHARACTER_IDS.length; offset += 1) {
     const candidate = CHARACTER_IDS[(preferred + offset) % CHARACTER_IDS.length];

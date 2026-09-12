@@ -1,0 +1,119 @@
+{
+  "formatVersion": 1,
+  "id": "moeha-fujiwara",
+  "packVersion": "1",
+  "clips": {
+    "walk": {
+      "asset": "walk.png",
+      "durationMs": 480,
+      "role": "locomotion",
+      "sourceFacing": "right",
+      "mirror": true
+    },
+    "wait": {
+      "asset": "wait.png",
+      "durationMs": 1280,
+      "role": "stationary",
+      "sourceFacing": "right",
+      "mirror": false
+    },
+    "celebrate": {
+      "asset": "celebrate.png",
+      "durationMs": 720,
+      "role": "stationary",
+      "sourceFacing": "right",
+      "mirror": false
+    },
+    "idle": {
+      "asset": "idle.png",
+      "durationMs": 1680,
+      "role": "stationary",
+      "sourceFacing": "right",
+      "mirror": false
+    }
+  },
+  "states": {
+    "working": {
+      "completion": "restart",
+      "flow": {
+        "type": "sequence",
+        "steps": [
+          {
+            "type": "move",
+            "clip": "walk",
+            "durationMs": 2857,
+            "speedPxPerSecond": 33
+          },
+          {
+            "type": "play",
+            "clip": "wait"
+          }
+        ]
+      }
+    },
+    "blocked": {
+      "completion": "restart",
+      "flow": {
+        "type": "sequence",
+        "steps": [
+          {
+            "type": "play",
+            "clip": "wait"
+          },
+          {
+            "type": "wait",
+            "durationMs": 900
+          }
+        ]
+      }
+    },
+    "done": {
+      "completion": "restart",
+      "flow": {
+        "type": "sequence",
+        "steps": [
+          {
+            "type": "play",
+            "clip": "celebrate"
+          },
+          {
+            "type": "wait",
+            "durationMs": 1600
+          }
+        ]
+      }
+    },
+    "idle": {
+      "completion": "restart",
+      "flow": {
+        "type": "sequence",
+        "steps": [
+          {
+            "type": "play",
+            "clip": "idle"
+          },
+          {
+            "type": "wait",
+            "durationMs": 1800
+          }
+        ]
+      }
+    },
+    "unknown": {
+      "completion": "restart",
+      "flow": {
+        "type": "sequence",
+        "steps": [
+          {
+            "type": "play",
+            "clip": "wait"
+          },
+          {
+            "type": "wait",
+            "durationMs": 1700
+          }
+        ]
+      }
+    }
+  }
+}

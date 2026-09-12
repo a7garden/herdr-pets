@@ -1,0 +1,116 @@
+{
+  "formatVersion": 1,
+  "id": "kaguya-shinomiya",
+  "packVersion": "2",
+  "clips": {
+    "run": {
+      "asset": "run.png",
+      "durationMs": 1060,
+      "role": "locomotion",
+      "sourceFacing": "right",
+      "mirror": true,
+      "scale": 1.35
+    },
+    "bounce": {
+      "asset": "jump.png",
+      "durationMs": 840,
+      "role": "stationary",
+      "holdAsset": "done.png",
+      "scale": 1.35
+    },
+    "watch": {
+      "asset": "wait.png",
+      "durationMs": 1010,
+      "role": "stationary",
+      "scale": 1.35
+    }
+  },
+  "states": {
+    "idle": {
+      "completion": "restart",
+      "flow": {
+        "type": "sequence",
+        "steps": [
+          {
+            "type": "play",
+            "clip": "watch"
+          },
+          {
+            "type": "wait",
+            "durationMs": 1800
+          }
+        ]
+      }
+    },
+    "working": {
+      "completion": "restart",
+      "flow": {
+        "type": "sequence",
+        "steps": [
+          {
+            "type": "move",
+            "clip": "run",
+            "durationMs": 1560,
+            "speedPxPerSecond": 22
+          },
+          {
+            "type": "move",
+            "clip": "run",
+            "durationMs": 2800,
+            "speedPxPerSecond": 35
+          }
+        ]
+      }
+    },
+    "blocked": {
+      "completion": "restart",
+      "flow": {
+        "type": "sequence",
+        "steps": [
+          {
+            "type": "play",
+            "clip": "watch"
+          },
+          {
+            "type": "wait",
+            "durationMs": 1300
+          }
+        ]
+      }
+    },
+    "done": {
+      "completion": "restart",
+      "flow": {
+        "type": "sequence",
+        "steps": [
+          {
+            "type": "play",
+            "clip": "bounce"
+          },
+          {
+            "type": "wait",
+            "durationMs": 1600
+          }
+        ]
+      }
+    },
+    "unknown": {
+      "completion": "restart",
+      "flow": {
+        "type": "sequence",
+        "steps": [
+          {
+            "type": "move",
+            "clip": "run",
+            "durationMs": 800,
+            "speedPxPerSecond": 12
+          },
+          {
+            "type": "wait",
+            "durationMs": 1200
+          }
+        ]
+      }
+    }
+  }
+}
